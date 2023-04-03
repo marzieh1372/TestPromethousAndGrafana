@@ -1,0 +1,4 @@
+## jvm_memory_used_bytes{area="heap",id="G1 Survivor Space",} 1005592.0
+The first part i.e jvm_memory_used_bytes is called the label, while the fields inside the curly braces are
+called attributes. Each of these labels represents a particular metric
+and the attribute provides you with a way to query so that you can get the values.
