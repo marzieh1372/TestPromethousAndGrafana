@@ -2,3 +2,24 @@
 The first part i.e jvm_memory_used_bytes is called the label, while the fields inside the curly braces are
 called attributes. Each of these labels represents a particular metric
 and the attribute provides you with a way to query so that you can get the values.
+
+
+## Docker-Compose file
+###Promethous
+Here, we have the config file mounted at the location /etc/prometheus and we use the location of
+the config file as an argument to the command. For simplicity, we are using the host network mode,
+so that Prometheus can access our application endpoint directly.
+With this, let’s start the docker image with docker compose up and open the URL http://localhost:9090 on our browser.
+
+## Alerts
+With Prometheus, we have the possibility to get notified when metrics have reached a certain point,
+which we can declare in the .rules files. Prometheus has a component which is called the “Alertmanager”,
+and it can send notifications over various channels like emails, Slack, PagerDuty, etc.
+
+
+
+-Grafana
+http://localhost:3000/dashboard
+-Prometheus
+-Search this logback_events_total
+http://localhost:9090/graph
