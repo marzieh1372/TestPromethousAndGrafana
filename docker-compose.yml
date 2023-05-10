@@ -1,34 +1,36 @@
 version: "3"
 
-volumes:
-    grafana_data: {}
-
 services:
     prometheus:
         image: prom/prometheus:v2.35.0
         container_name: prometheus
         restart: unless-stopped
-        network_mode: host
         volumes:
             - ./data/prometheus/config:/etc/prometheus
         command:
-            - --config.file=/etc/prometheus/prometheus.yaml
-
+            - '--config.file=/etc/prometheus/prometheus.yaml'
+        ports:
+            - '9090:9090'
+        networks:
+            - promnet
 
     grafana:
         image: grafana/grafana:6.7.2
         container_name: grafana
-        volumes:
-            - grafana_data:/var/lib/grafana
-            - ./grafana/provisioning:/etc/grafana/provisioning
+        ports:
+            - '3000:3000'
         environment:
             - GF_SECURITY_ADMIN_USER=admin
             - GF_SECURITY_ADMIN_PASSWORD=admin
             - GF_USERS_ALLOW_SIGN_UP=false
         restart: unless-stopped
-        network_mode: host
+        networks:
+            - promnet
         labels:
             org.label-schema.group: "monitoring"
 
+networks:
+    promnet:
+        driver: bridge
 
 

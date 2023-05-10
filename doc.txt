@@ -23,3 +23,6 @@ http://localhost:3000/dashboard
 -Prometheus
 -Search this logback_events_total
 http://localhost:9090/graph
+
+We have tow way : we can create datasource for grafana in code and set datasource address in docker file
+or we can set any datasource and set datasource info in  grafana dashboard
